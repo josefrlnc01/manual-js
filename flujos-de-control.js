@@ -78,6 +78,66 @@ function calcularPotencia(num, pot) {
     return `${num} elevado a ${pot} es ${res}`
 }
 
+//Ejercicio de flujos de control : obtención de media positiva y negativa de una lista
+function mediaNegativaYPositiva (nums) {
+    let sumaPos = 0
+    let contadorPos = 0
+    let sumaNeg = 0
+    let contadorNeg = 0
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] >= 0) {
+            sumaPos += nums[i]
+            contadorPos++
+        } else {
+            sumaNeg += nums[i]
+            contadorNeg++
+        }
+    }
+
+    let mediaPos = contadorPos ? sumaPos / contadorPos : 0
+    let mediaNeg = contadorNeg ? sumaNeg / contadorNeg : 0
+
+    return {mediaPos, mediaNeg}
+}
+
+//Ejercicio de flujos de control : simulación de inventario
+function fichasDeAlmacen () {
+    const fichas = [
+    { codigo: 'A', precio: 10.50, cantidad: 5 },
+    { codigo: 'B', precio: 20.00, cantidad: 2 },
+    { codigo: 'A', precio: 5.00,  cantidad: 10 },
+    { codigo: 'B', precio: 15.00, cantidad: 3 },
+    { codigo: 'Z', precio: 0,      cantidad: 0 } // Centinela para finalizar
+];
+
+    let totalArticulosA = 0
+    let totalArticulosB = 0
+    let importeTotalA = 0
+    let importeTotalB = 0
+
+    for (let i = 0; i < fichas.length; i++) {
+        const ficha = fichas[i]
+
+        if (ficha.codigo !== 'A' && ficha.codigo !== 'B') {
+            break
+        }
+        const importeFicha = ficha.cantidad * ficha.precio
+        if (ficha.codigo === 'A') {
+            importeTotalA += importeFicha
+            totalArticulosA += ficha.cantidad
+        }
+        if (ficha.codigo === 'B') {
+            importeTotalB += importeFicha
+            totalArticulosB += ficha.cantidad
+        }
+    }
+
+    return {importeTotalA, importeTotalB, totalArticulosA, totalArticulosB}
+}
+
+
+
 //Ejercicio de flujos de control : determinar un número primo
 function determinarPrimo (numero) {
     for (let i = 2; i < numero; i++) {
@@ -262,14 +322,120 @@ function factorialNum (num) {
 
 
 function tablaMultiplicaciones (n) {
-    for (let i = 0; i <= n; i++) {
+    for (let i = 1; i <= n; i++) {
         for (let j = 0; j <= 10; j++) {
             console.log(`${i} * ${j} = ${i * j}`)
         }
     }
 }
 
-tablaMultiplicaciones(10)
+
+
+//Ejercicio de flujos de control : validación de un número entero proporcionado por el usuario
+function error () {
+    let n = 0
+    let isValid = false
+    do {
+        n = Number(prompt('Escribe un número'))
+        if (!Number.isInteger(n) || isNaN(n)) {
+            alert('No es un número entero válido')
+        } else {
+            alert(`Número válido ${n}`)
+            isValid = true
+        }
+    } while (!isValid)
+    
+    return n
+}
+
+//Ejercicio de flujos de control : media de una lista
+const lis = [5, 12, 3, 8, 20, 1, -1]
+function mediaLista (l) {
+    let i = 0
+    let acc = 0
+    let count = 0
+    while (l[i] > 0) {
+        acc += l[i]
+        i++
+        count++
+    }
+
+    const media = acc / count
+
+    return media
+}
+
+
+
+//Ejercicio de flujos de control : obtención de días de un mes específico
+function diasDelMes (mes, bisiesto) {
+    let meses31 = [ "enero", "marzo"," mayo", "julio", "agosto", "octubre", "diciembre"]
+
+    if (meses31.includes(mes.toLowerCase())) {
+        return 'El mes tiene 31 días'
+    } else {
+        if (bisiesto && mes.toLowerCase() === 'febrero') {
+            return 'El mes tiene 29 días'
+        }
+        if (!bisiesto && mes.toLowerCase() === 'febrero' ) {
+            return 'El mes tiene 28 días'
+        }
+        return 'El mes tiene 30 días'
+    }
+}
+
+
+/*function sumarEnteros1A100DiferentesEstructuras () {
+    let contador = 0
+    let suma = 0
+    do {
+        suma += contador
+        contador++
+    } while (contador <= 100)
+
+    return suma
+}*/
+
+
+/*function sumarEnteros1A100DiferentesEstructuras () {
+    let contador = 0
+    let suma = 0
+    while (contador <= 100) {
+        suma += contador
+        contador++
+    }
+
+    return suma
+}*/
+
+//Ejercicio de flujos de control : suma de enteros con diferentes estructuras
+function sumarEnteros1A100DiferentesEstructuras () {
+    let suma = 0
+    for (let i = 0; i <= 100; i++) {
+        suma += i
+    }
+    return suma
+}
+
+
+function imprimirPrimosHasta1000 () {
+    let contador = 2
+
+    while (contador <= 1000) {
+        let esPrimo = true
+        for (let i = 2; i < contador; i++) {
+            if (contador % i === 0) {
+                esPrimo = false
+                break
+            }
+        }
+        if (esPrimo) {
+            console.log(contador)
+        }
+        contador++
+    }
+
+}
 
 
 
