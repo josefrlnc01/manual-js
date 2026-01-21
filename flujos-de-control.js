@@ -68,6 +68,8 @@ function factorial(num) {
     return acc
 }
 
+
+//Ejercicio de flujos de control : cálculo de potencias de un número
 function calcularPotencia(num, pot) {
     let res = 1
     for (let i = 0; i < pot; i++) {
@@ -76,6 +78,7 @@ function calcularPotencia(num, pot) {
     return `${num} elevado a ${pot} es ${res}`
 }
 
+//Ejercicio de flujos de control : determinar un número primo
 function determinarPrimo (numero) {
     for (let i = 2; i < numero; i++) {
         if (numero % i === 0 ) {
@@ -86,7 +89,7 @@ function determinarPrimo (numero) {
 }
 
 
-
+//Ejercicio de flujos de control : comprobar si el número es perfecto
 function esPerfecto (n) {
     let arr = []
     
@@ -119,7 +122,7 @@ function esPerfecto (n) {
     return 'Es un número perfecto'
 }
 
-
+//Ejercicio de flujos de control : encontrar mayor y menor en una lista
 function encontrarMayorYMenor (arr) {
     let mayor = arr[0]
     let menor = arr[0]
@@ -148,11 +151,9 @@ function factorial (n) {
     }
 }
 
-
+//Ejercicio de flujos de control : encontrar las poblaciones mas grandes en un array anidado
 function poblacionMasGrande (ciu) {
-    
     let i = 0
-    
     while (i < 8) {
         let mayor = 0
         let j = 0
@@ -163,7 +164,6 @@ function poblacionMasGrande (ciu) {
             }
             j++
         }
-        
         console.log(`La ciudad mayor es ${mayor}`)
         i++
     }
@@ -181,7 +181,7 @@ const datosCiudades = [
 ];
 
 
-
+//Ejercicio de flujos de control : representación de un triángulo
 function trianguloIsosceles () {
     const num_lineas = 5
     let estructura = ''
@@ -193,5 +193,84 @@ function trianguloIsosceles () {
     console.log(estructura)
 }
 
+//Ejercicio de flujos de control : serie de fibonacci
+function fibonnacci (n) { 
+    let primero = 0
+    let segundo = 1
+    for (let i = 0; i < n;  i++) {
+        let siguiente = primero + segundo
+        primero = segundo
+        segundo = siguiente
+        console.log(primero + segundo)
+    }
+}
 
-console.log(trianguloIsosceles())
+
+//Ejercicio de flujos de control : dar la vuelta a un número
+function invertirNumero (num) {
+    let arr = num.toString().split('')
+    let newArr = []
+    for (let i = arr.length - 1; i >= 0; i--) {
+        newArr.push(arr[i])
+    }
+    let inverso = newArr.join('')
+    return inverso
+}
+//Ejercicio de flujos de control : representación de un triángulo
+function trianguloAsteriscos (n) {
+    for (let fila = 1; fila <= n; fila++) {
+        let linea = ''
+        for (let espacios = 0; espacios < n - fila; espacios++) {
+            linea += ' '
+        }
+
+        for (let asteriscos = 0; asteriscos < fila; asteriscos++) {
+            linea += '*'
+        }
+        console.log(linea)
+    }
+}
+
+
+
+//Ejercicio de flujos de control : obtención de cociente y resto de un número
+function cocienteYResto (m, n) {
+    let q = 0
+    let r = m 
+    do {
+        //Restamos en cada iteración el valor del divisor para obtener el resto
+        r -= n
+        //Por cada resta que hagamos contamos uno para obtener el cociente
+        q += 1
+    } while (r >= n)
+
+    return `Dividendo ${m}, Divisor${n}, Cociente ${q}, Resto ${r}`
+}
+
+
+
+function factorialNum (num) {
+    let counter = num
+    let fact = num
+    let res = 0
+    while (counter > 0) {
+        counter--
+        res += fact * counter
+    }
+    return res
+}
+
+
+function tablaMultiplicaciones (n) {
+    for (let i = 0; i <= n; i++) {
+        for (let j = 0; j <= 10; j++) {
+            console.log(`${i} * ${j} = ${i * j}`)
+        }
+    }
+}
+
+tablaMultiplicaciones(10)
+
+
+
+
