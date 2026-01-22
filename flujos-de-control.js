@@ -523,5 +523,15 @@ function contadorEdad (arch) {
     console.log(`Hay ${contadorMayores65 > 1 ? contadorMayores65 : '1'} ${contadorMayores65 > 1 ? 'trabajadores' : 'trabajador'} de 65 o más años`)
 }
 
+//Ejercicio de flujos de control : comprobación de tipo de número
+function comprobarPrimoOCompuesto (num) {
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+            return 'Es compuesto'
+        } else {
+            return 'Es primo'
+        }
+    }
+}
 
 
