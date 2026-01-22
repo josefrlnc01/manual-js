@@ -417,7 +417,7 @@ function sumarEnteros1A100DiferentesEstructuras () {
     return suma
 }
 
-
+//Ejercicio de flujos de control : primos hasta 1000
 function imprimirPrimosHasta1000 () {
     let contador = 2
 
@@ -437,6 +437,91 @@ function imprimirPrimosHasta1000 () {
 
 }
 
+const lecturasClimaticas = [
+    { max: 25.5, min: 12.0 },
+    { max: 9.0,  min: 5.0 },
+    { max: 18.0, min: 9.0 },
+    { max: 30.2, min: 15.8 },
+    { max: 22.0, min: 10.0 },
+    { max: 0.0,  min: 0.0 } // Par de fin
+];
+//Ejercicio de flujos de control : obtención de temperaturas en array de objetos
+function clima (lecturas) {
+    //Enteros
+    let num_dias = 0 
+    let num_errores = 0 
+    let cont_max = 0
+    let cont_min = 0
+    let porc_err = 0
+    let i = 0
+    //Reales
+    let media_max = 0 
+    let media_min = 0 
+    let suma_max = 0 
+    let suma_min = 0
+   
+    while (i < lecturas.length && (lecturas[i].max !== 0 || lecturas[i].min !== 0)) {
+        
+        if (lecturas[i].max !== 9) {
+            suma_max += lecturas[i].max
+            cont_max++
+        }
+        if (lecturas[i].min !== 9) {
+            suma_min += lecturas[i].min
+            cont_min++
+        }
+
+        if (lecturas[i].max === 9 || lecturas[i].min === 9) {
+            num_errores++
+        }
+        num_dias++
+        i++
+    }
+    media_max = cont_max > 0 ? suma_max / cont_max : 0
+    media_min = cont_min > 0 ? suma_min / cont_min : 0
+    porc_err = num_dias > 0 ? (num_errores / num_dias) * 100 : 0
+
+    return {media_max, media_min, numero_errores : num_errores, porcentaje_errores : porc_err, num_dias}
+}
+
+
+//Ejercicio de flujos de control : cálculo de la serie de x número
+function calcularSerie (x, n) {
+    let e = 0
+    for (let i = 1; i < n; i++) {
+        let factorial = 1
+        for (let j = 1; j < n; j++) {
+            
+            factorial *= j
+            
+        }
+        
+        e += Math.pow(x, n) / factorial
+    }
+
+    return e
+}
+
+console.log(calcularSerie(23,4))
+
+const archivoEmpresa = [
+    { nombre: "Juan", edad: 30 },
+    { nombre: "Pedro", edad: 66 },
+    { nombre: "Marta", edad: 65 },
+    { nombre: "Luis", edad: 70 },
+    { nombre: "Ana", edad: 25 }
+];
+//Ejercicio de flujos de control : contador de edad en array de objetos
+function contadorEdad (arch) {
+    let contadorMayores65 = 0
+    for (let i = 0; i < arch.length; i++) {
+        if (arch[i].edad >= 65) {
+            contadorMayores65++
+        }
+    }
+
+    console.log(`Hay ${contadorMayores65 > 1 ? contadorMayores65 : '1'} ${contadorMayores65 > 1 ? 'trabajadores' : 'trabajador'} de 65 o más años`)
+}
 
 
 
